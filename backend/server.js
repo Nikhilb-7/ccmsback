@@ -1,3 +1,4 @@
+const fileRoutes = require("./routes/files");
 const authRoutes = require("./routes/auth");
 
 require("dotenv").config();          // must be first
@@ -8,6 +9,7 @@ const connectDB = require("./config/db");
 const app = express();
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/files", fileRoutes);
 
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK", timestamp: new Date() });
